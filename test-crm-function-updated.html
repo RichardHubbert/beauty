@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Updated CRM Function</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Test Updated CRM Function</h1>
+    <p>This test will verify that the CRM function is now sending <code>source_app: "chauffeur_booking"</code> instead of "table_booking".</p>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="customer_name">Customer Name:</label>
+            <input type="text" id="customer_name" name="customer_name" value="Test Customer" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="customer_email">Customer Email:</label>
+            <input type="email" id="customer_email" name="customer_email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="customer_phone">Customer Phone:</label>
+            <input type="text" id="customer_phone" name="customer_phone" value="+44 20 7946 0958">
+        </div>
+        
+        <div class="form-group">
+            <label for="business_name">Business Name:</label>
+            <input type="text" id="business_name" name="business_name" value="Bond Chauffeur" required>
+        </div>
+        
+        <button type="submit">Test CRM Function</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                // Call the updated Supabase function
+                const response = await fetch('https://nnxdtpnrwgcknhpyhowr.supabase.co/functions/v1/send-customer-to-crm', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ueGR0cG5yd3dnY2tuaHB5aG93ciIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzM1NzI5NzI5LCJleHAiOjIwNTEzMDU3Mjl9.Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8Ej8'
+                    },
+                    body: JSON.stringify({
+                        customerName: data.customer_name,
+                        customerEmail: data.customer_email,
+                        customerPhone: data.customer_phone,
+                        restaurantName: data.business_name,
+                        bookingDate: new Date().toISOString(),
+                        startTime: '19:00',
+                        partySize: 2,
+                        bookingId: 'test-' + Date.now(),
+                        restaurantId: 'test-restaurant-id',
+                        isNewCustomer: false
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Test Successful!</h3>
+                            <p>The CRM function is working correctly.</p>
+                            <h4>Response Details:</h4>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>❌ Test Failed</h3>
+                            <p>Error: ${result.error}</p>
+                            <pre>${JSON.stringify(result, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Test Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chauffeur - Premium Chauffeur Services</title>
+    <meta name="description" content="Experience luxury chauffeur services with Bond Chauffeur. Professional, reliable, and elegant transportation solutions." />
+    <meta name="author" content="Bond Chauffeur" />
+
+    <meta property="og:title" content="Chauffeur - Premium Chauffeur Services" />
+    <meta property="og:description" content="Experience luxury chauffeur services with Bond Chauffeur. Professional, reliable, and elegant transportation solutions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://theaidesign.co.uk/bondChauffeurPilot" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bondchauffeur" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <style>
+      @font-face {
+        font-family: 'Archia';
+        src: url('https://atipofoundry.com/fonts/archia/archia-regular-webfont.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+    
+    <!-- Custom styles for the chat widget to make it less intrusive -->
+    <style>
+      /* Position the chat widget in a better location */
+      elevenlabs-convai {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 100 !important;
+      }
+      
+      /* Make the widget smaller when collapsed */
+      .convai-widget-button {
+        transform: scale(0.85) !important;
+      }
+      
+      /* Hide the widget on smaller screens where it might get in the way */
+      @media (max-width: 768px) {
+        elevenlabs-convai {
+          bottom: 10px !important;
+          right: 10px !important;
+        }
+        .convai-widget-button {
+          transform: scale(0.75) !important;
+        }
+      }
+      
+      /* Add a media query to hide the widget on very small screens */
+      @media (max-width: 480px) {
+        elevenlabs-convai:not(.convai-widget-expanded) {
+          opacity: 0.7 !important;
+        }
+      }
+    </style>
+    
+    <elevenlabs-convai agent-id="hFhNyzsEj0QwywLVdOEQ"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </body>
+</html>

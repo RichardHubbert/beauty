@@ -1,0 +1,108 @@
+# Bond Chauffeur
+
+## Project info
+
+**Development URL**: https://lovable.dev/projects/bondchauffeur
+
+**Production URL**: https://theaidesign.co.uk/bondChauffeurPilot
+
+**Project Name**: Bond Chauffeur
+
+## How can I edit this code?
+
+There are several ways of editing your application.
+
+**Use Lovable**
+
+Simply visit the [Lovable Project](https://lovable.dev/projects/572fb16c-338f-484d-a597-4d5dc1a7a5cc) and start prompting.
+
+Changes made via Lovable will be committed automatically to this repo.
+
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## Features
+
+### Chauffeur Service Selection
+The application includes a comprehensive chauffeur service selector with:
+- **Dropdown Menu**: Easy selection from a list of available chauffeur services
+- **Search Functionality**: Filter services by type, location, or vehicle
+- **Visual Display**: Each service shows an image, rating, and details
+- **Responsive Design**: Works seamlessly on both desktop and mobile devices
+- **Global State Management**: Selected service is available throughout the app
+
+### Service Management (Admin Only)
+Admin users (richardhubbert@gmail.com) can manage chauffeur services through:
+- **Add New Services**: Complete form with all service details
+- **Edit Existing Services**: Update any service information
+- **Delete/Restore Services**: Soft delete with ability to restore
+- **Search & Filter**: Find services quickly in the admin interface
+- **Database Integration**: All changes saved to Supabase
+- **Access Control**: Only admin users can access management features
+
+### Booking System
+- User authentication and authorization
+- Chauffeur booking with date, time, and service type selection
+- Real-time availability checking
+- Email confirmation system
+- Admin dashboard for managing bookings
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+- Supabase (Backend)
+- React Router (Navigation)
+- React Query (Data fetching)
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/572fb16c-338f-484d-a597-4d5dc1a7a5cc) and click on Share -> Publish.
+
+The production site will be available at: https://bondchauffeur.com
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
